@@ -2,8 +2,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useAirdropStore } from '@/stores/airdropStore';
-import EditAirdropModal from './EditAirdropModal.vue';
-import DeleteAirdropModal from './DeleteAirdropModal.vue';
+import editAirdropModal from './editAirdropModal.vue';
+import deleteAirdropModal from './deleteAirdropModal.vue';
 
 const props = defineProps({ airdrop: Object });
 const store = useAirdropStore();
@@ -82,13 +82,13 @@ function removeTag(tag) {
 
 
 
-    <EditAirdropModal
+    <editAirdropModal
       v-if="showEdit"
       :airdrop="airdrop"
       @close="showEdit = false"
     />
 
-    <DeleteAirdropModal
+    <deleteAirdropModal
       v-if="showDelete"
       :airdropId="airdrop.id"
       @close="showDelete = false"
