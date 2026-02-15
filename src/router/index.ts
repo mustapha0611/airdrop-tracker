@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from '@/views/Login.vue';
-import Dashboard from '@/views/Dashboard.vue';
+import login from '@/views/login.vue';
+import dashboard from '@/views/dashboard.vue';
 import { useAuthStore } from '@/stores/authStore';
 
 const routes = [
-  { path: '/login', component: Login },
-  { path: '/', component: Dashboard }
+  { path: '/login', component: login },
+  { path: '/', component: dashboard }
 ];
 
 const router = createRouter({
