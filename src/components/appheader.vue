@@ -21,7 +21,7 @@ const theme = useThemeStore();
  
         <!-- GitHub -->
         <a
-          href="https://github.com"
+          href="https://github.com/mustapha0611/airdrop-tracker"
           target="_blank"
           class="text-slate-500 hover:text-slate-800  transition"
         >

@@ -16,6 +16,9 @@ app.use(primevue, {
     preset: Aura,
     options: {
       darkModeSelector: ".my-app-dark",
+      cssVariables: {
+        "p-toast-width": "15rem",
+      },
     },
   },
 });

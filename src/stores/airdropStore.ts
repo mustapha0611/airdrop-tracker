@@ -93,25 +93,22 @@ export const useAirdropStore = defineStore("airdrops", {
       try {
         const auth = useAuthStore();
 
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from("airdrops")
           .insert([
             {
               ...payload,
               user_id: auth.user.id,
             },
-          ])
-          .select()
-          .single();
+          ]);
 
         if (error) {
           console.error("Failed to add airdrop:", error);
           throw error;
         }
 
-        if (data) {
-          this.airdrops.unshift(data);
-        }
+        // Fetch the updated list to refresh the UI
+        await this.fetchAirdrops();
 
       } catch (error) {
 

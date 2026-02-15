@@ -19,9 +19,11 @@ const status = ref(props.airdrop.status);
 const tags = ref(props.airdrop.tags?.join(', ') || '');
 
 const statusOptions = ['active', 'completed', 'expired'];
+let isLoading = ref(false);
 const showEditDropdown = ref(false);
 
 async function submit() {
+  isLoading.value = true;
   await store.updateAirdrop(props.airdrop.id, {
     name: name.value,
     description: description.value,
@@ -32,6 +34,8 @@ async function submit() {
       .map(t => t.trim())
       .filter(Boolean)
   });
+  
+isLoading.value = false;
 toast.add({
   severity: 'success',
   summary: 'Success',
@@ -44,7 +48,7 @@ toast.add({
 
 <template>
   <div class="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
-    <div class="bg-white rounded-xl w-full max-w-md p-6 shadow-lg">
+    <div class="bg-white rounded-xl w-[90%] max-w-md p-6 shadow-lg">
       <h2 class="text-base font-semibold text-slate-800 mb-4">
         Edit Airdrop
       </h2>
@@ -81,8 +85,12 @@ toast.add({
         <button @click="$emit('close')" class="text-sm py-2  px-4 rounded-lg bg-slate-100 text-slate-500 hover:text-slate-700 cursor-pointer">
           Cancel
         </button>
-        <button @click="submit" class="bg-slate-800 text-white text-sm px-4 py-2 rounded-lg hover:bg-slate-700 cursor-pointer">
-          Save changes
+        <button @click="submit" :disabled="isLoading" class="bg-slate-800 text-white text-sm px-4 py-2 rounded-lg hover:bg-slate-700 cursor-pointer disabled:bg-slate-300 disabled:cursor-not-allowed">
+          <span
+            class="pi pi-spin pi-spinner cursor-not-allowed"
+            v-if="isLoading"
+          ></span>
+          <span v-else>Save changes</span>
         </button>
       </div>
     </div>

@@ -6,7 +6,7 @@ const auth = useAuthStore();
 
 <template>
   <div class="min-h-screen flex items-center justify-center bg-slate-50">
-    <div class="bg-white border border-slate-200 rounded-xl p-8 w-full max-w-sm shadow-sm text-center">
+    <div class="bg-white border border-slate-200 rounded-xl p-8 w-[80%] max-w-sm shadow-sm text-center">
       <h1 class="text-lg font-semibold text-slate-800 mb-2">
         Airdrop Tracker
       </h1>

@@ -1,3 +1,10 @@
 @import 'tailwindcss';
 
 @import 'primeicons/primeicons.css';
+
+@media (max-width:600px) {
+.p-toast {
+  width: 20rem !important;
+}
+}
+
