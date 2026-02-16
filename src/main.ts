@@ -25,6 +25,7 @@ app.use(primevue, {
   },
 });
 app.use(ToastService);
+app.mount("#app");
+
 const authStore = useAuthStore();
 authStore.initAuth(); //
-app.mount("#app");
