@@ -1,6 +1,7 @@
 // src/stores/auth.store.ts
 import { defineStore } from 'pinia';
 import { supabase } from '@/lib/supabase';
+import router from '@/router';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -14,7 +15,7 @@ export const useAuthStore = defineStore('auth', {
         provider: 'google',
         options: {
           // redirect to dedicated callback page
-          redirectTo: `${window.location.origin}/auth/callback`
+          redirectTo: `${window.location.origin}`
         }
       });
     },
@@ -54,6 +55,8 @@ export const useAuthStore = defineStore('auth', {
       await supabase.auth.signOut();
       this.user = null;
       localStorage.removeItem('user');
+      router.push('/login');
+
     }
   }
 });
