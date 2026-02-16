@@ -11,14 +11,25 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async signInWithGoogle() {
       await supabase.auth.signInWithOAuth({
-        provider: 'google'
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin // your site URL
+        }
       });
     },
 
     async initAuth() {
-      const { data } = await supabase.auth.getUser();
-      this.user = data.user;
-      localStorage.setItem('user', JSON.stringify(data.user));
+      // Check if user already has a session
+      const { data: { session } } = await supabase.auth.getSession();
+      this.user = session?.user || null;
+      if (this.user) localStorage.setItem('user', JSON.stringify(this.user));
+
+      // Listen for future auth changes (login, logout)
+      supabase.auth.onAuthStateChange((_event, session) => {
+        this.user = session?.user || null;
+        if (this.user) localStorage.setItem('user', JSON.stringify(this.user));
+        else localStorage.removeItem('user');
+      });
     },
 
     async logout() {
