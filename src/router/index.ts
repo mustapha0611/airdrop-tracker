@@ -18,13 +18,14 @@ const router = createRouter({
 // Route guard
 router.beforeEach(async (to) => {
   const auth = useAuthStore();
-  // Ensure initAuth runs once (idempotent due to _initialized flag)
-  await auth.initAuth();
 
-  // Allow the callback page through without auth check
+  // Skip initAuth on the callback page — let it handle the token exchange itself
   if (to.path === '/auth/callback') {
     return;
   }
+
+  // Ensure initAuth runs once (idempotent due to _initialized flag)
+  await auth.initAuth();
 
   // Protect dashboard and other pages
   if (!auth.user && to.path !== '/login') {

@@ -46,7 +46,11 @@ export const useAuthStore = defineStore('auth', {
       this.user = session?.user || null;
       if (this.user) localStorage.setItem('user', JSON.stringify(this.user));
 
-      // Listen for future login/logout events
+      this._setupAuthListener();
+    },
+
+    // Set up the auth state change listener (call only once)
+    _setupAuthListener() {
       supabase.auth.onAuthStateChange((_event, session) => {
         this.user = session?.user || null;
         if (this.user) localStorage.setItem('user', JSON.stringify(this.user));

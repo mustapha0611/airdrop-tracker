@@ -15,15 +15,31 @@ const router = useRouter();
 
 onMounted(async () => {
   try {
-    // Supabase automatically parses the hash fragment (#access_token=...)
-    // and exchanges it for a session when getSession() is called.
-    const { data: { session }, error } = await supabase.auth.getSession();
+    // Check for PKCE flow (code in query params) or implicit flow (tokens in hash)
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
 
-    if (error) throw error;
+    let session = null;
+
+    if (code) {
+      // PKCE flow: exchange the authorization code for a session
+      const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+      if (error) throw error;
+      session = data.session;
+    } else {
+      // Implicit flow fallback: tokens are in the URL hash fragment
+      // Supabase SDK parses them automatically during getSession()
+      const { data, error } = await supabase.auth.getSession();
+      if (error) throw error;
+      session = data.session;
+    }
 
     if (session) {
       auth.user = session.user;
       localStorage.setItem('user', JSON.stringify(session.user));
+      // Mark auth as initialized and set up the listener for future auth events
+      auth._initialized = true;
+      auth._setupAuthListener();
       router.push('/');
     } else {
       console.error('No session found after OAuth callback');
