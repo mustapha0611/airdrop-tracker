@@ -18,10 +18,16 @@ const router = createRouter({
 // Route guard
 router.beforeEach(async (to) => {
   const auth = useAuthStore();
+  // Ensure initAuth runs once (idempotent due to _initialized flag)
   await auth.initAuth();
 
+  // Allow the callback page through without auth check
+  if (to.path === '/auth/callback') {
+    return;
+  }
+
   // Protect dashboard and other pages
-  if (!auth.user && to.path !== '/login' && to.path !== '/auth/callback') {
+  if (!auth.user && to.path !== '/login') {
     return '/login';
   }
 

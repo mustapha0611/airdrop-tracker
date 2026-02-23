@@ -4,8 +4,6 @@ import primevue from "primevue/config";
 import Aura from "@primeuix/themes/aura";
 import ToastService from "primevue/toastservice";
 
-import { useAuthStore } from "./stores/authStore";
-
 import App from "./App.vue";
 import router from "./router";
 
@@ -26,6 +24,3 @@ app.use(primevue, {
 });
 app.use(ToastService);
 app.mount("#app");
-
-const authStore = useAuthStore();
-authStore.initAuth(); //

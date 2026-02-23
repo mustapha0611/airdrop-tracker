@@ -5,7 +5,8 @@ import router from '@/router';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: JSON.parse(localStorage.getItem('user') || 'null')
+    user: JSON.parse(localStorage.getItem('user') || 'null'),
+    _initialized: false
   }),
 
   actions: {
@@ -14,8 +15,7 @@ export const useAuthStore = defineStore('auth', {
       await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          // redirect to dedicated callback page
-          redirectTo: `${window.location.origin}`
+          redirectTo: `${window.location.origin}/auth/callback`
         }
       });
     },
@@ -37,8 +37,11 @@ export const useAuthStore = defineStore('auth', {
       }
     },
 
-    // Step 3: Initialize auth on normal page loads
+    // Step 3: Initialize auth on app startup (call only once)
     async initAuth() {
+      if (this._initialized) return;
+      this._initialized = true;
+
       const { data: { session } } = await supabase.auth.getSession();
       this.user = session?.user || null;
       if (this.user) localStorage.setItem('user', JSON.stringify(this.user));
@@ -56,7 +59,6 @@ export const useAuthStore = defineStore('auth', {
       this.user = null;
       localStorage.removeItem('user');
       router.push('/login');
-
     }
   }
 });
