@@ -10,7 +10,7 @@ export const useAuthStore = defineStore('auth', {
   }),
 
   actions: {
-    // Step 1: Start Google OAuth login
+    // Start Google OAuth login
     async signInWithGoogle() {
       await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -20,24 +20,7 @@ export const useAuthStore = defineStore('auth', {
       });
     },
 
-    // Step 2: Handle redirect callback (consume tokens)
-    async handleOAuthCallback() {
-      try {
-        // Get the session that was automatically stored on redirect
-        const { data: { session }, error } = await supabase.auth.getSession();
-        if (error) throw error;
-
-        this.user = session?.user || null;
-        if (this.user) localStorage.setItem('user', JSON.stringify(this.user));
-
-        return session;
-      } catch (err) {
-        console.error('OAuth callback error:', err);
-        return null;
-      }
-    },
-
-    // Step 3: Initialize auth on app startup (call only once)
+    // Initialize auth on app startup (call only once)
     async initAuth() {
       if (this._initialized) return;
       this._initialized = true;
@@ -45,11 +28,12 @@ export const useAuthStore = defineStore('auth', {
       const { data: { session } } = await supabase.auth.getSession();
       this.user = session?.user || null;
       if (this.user) localStorage.setItem('user', JSON.stringify(this.user));
+      else localStorage.removeItem('user');
 
       this._setupAuthListener();
     },
 
-    // Set up the auth state change listener (call only once)
+    // Set up the auth state change listener
     _setupAuthListener() {
       supabase.auth.onAuthStateChange((_event, session) => {
         this.user = session?.user || null;

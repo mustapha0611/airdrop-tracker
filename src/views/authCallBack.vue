@@ -13,41 +13,29 @@ import { supabase } from '@/lib/supabase';
 const auth = useAuthStore();
 const router = useRouter();
 
-onMounted(async () => {
-  try {
-    // Check for PKCE flow (code in query params) or implicit flow (tokens in hash)
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-
-    let session = null;
-
-    if (code) {
-      // PKCE flow: exchange the authorization code for a session
-      const { data, error } = await supabase.auth.exchangeCodeForSession(code);
-      if (error) throw error;
-      session = data.session;
-    } else {
-      // Implicit flow fallback: tokens are in the URL hash fragment
-      // Supabase SDK parses them automatically during getSession()
-      const { data, error } = await supabase.auth.getSession();
-      if (error) throw error;
-      session = data.session;
-    }
-
-    if (session) {
+onMounted(() => {
+  // Listen for the SIGNED_IN event that fires when the SDK
+  // automatically exchanges the PKCE code from the URL
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN' && session) {
       auth.user = session.user;
       localStorage.setItem('user', JSON.stringify(session.user));
-      // Mark auth as initialized and set up the listener for future auth events
       auth._initialized = true;
-      auth._setupAuthListener();
+      subscription.unsubscribe();
       router.push('/');
-    } else {
-      console.error('No session found after OAuth callback');
+    } else if (event === 'TOKEN_REFRESHED' && session) {
+      auth.user = session.user;
+      localStorage.setItem('user', JSON.stringify(session.user));
+    }
+  });
+
+  // Safety timeout — if no auth event fires within 5 seconds, redirect to login
+  setTimeout(() => {
+    if (!auth.user) {
+      subscription.unsubscribe();
+      console.error('Auth callback timed out — no session received');
       router.push('/login');
     }
-  } catch (err) {
-    console.error('OAuth callback error:', err);
-    router.push('/login');
-  }
+  }, 5000);
 });
 </script>
