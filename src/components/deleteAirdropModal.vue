@@ -28,18 +28,18 @@ async function confirm() {
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
-    <div class="bg-white rounded-xl w-[90%] max-w-sm p-6 shadow-lg">
-      <h2 class="text-base font-semibold text-slate-800 mb-2">
+  <div class="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 transition-colors duration-300">
+    <div class="bg-white dark:bg-slate-900 rounded-xl w-[90%] max-w-sm p-6 shadow-lg border border-slate-200 dark:border-slate-800 transition-colors duration-300">
+      <h2 class="text-base font-semibold text-slate-800 dark:text-slate-100 mb-2 transition-colors duration-300">
         Delete airdrop?
       </h2>
 
-      <p class="text-sm text-slate-500 mb-6">This action can’t be undone.</p>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 transition-colors duration-300">This action can’t be undone.</p>
 
       <div class="flex justify-end gap-3">
         <button
           @click="$emit('close')"
-          class="text-sm text-slate-500 hover:text-slate-700 cursor-pointer"
+          class="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer transition-colors duration-300"
         >
           Cancel
         </button>
@@ -47,7 +47,7 @@ async function confirm() {
         <button
           @click="confirm"
           :disabled="isloading"
-          class="bg-red-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-red-500 cursor-pointer disabled:bg-red-300 disabled:cursor-not-allowed"
+          class="bg-red-600 dark:bg-red-700 text-white text-sm px-4 py-2 rounded-lg hover:bg-red-500 dark:hover:bg-red-600 cursor-pointer disabled:bg-red-300 disabled:dark:bg-red-900 disabled:cursor-not-allowed transition-colors duration-300"
         >
           <span
             class="pi pi-spin pi-spinner cursor-not-allowed"

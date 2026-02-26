@@ -23,7 +23,7 @@ onMounted(() => {
       <filters />
       <button
         @click="showAddForm = true"
-        class="px-4 py-2 text-sm font-medium cursor-pointer text-white bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors whitespace-nowrap"
+        class="px-4 py-2 text-sm font-medium cursor-pointer text-white bg-slate-800 dark:bg-blue-600 rounded-lg hover:bg-slate-700 dark:hover:bg-blue-700 transition-colors duration-300 whitespace-nowrap"
       >
         + Add Airdrop
       </button>
@@ -33,7 +33,7 @@ onMounted(() => {
       class="py-20 flex flex-col items-center justify-center"
     >
       <img src="@/assets/empty.png" alt="" />
-      <p class="text-sm text-slate-500 mb-6">Add Your airdrop List</p>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 transition-colors duration-300">Add Your airdrop List</p>
     </div>
 <section v-else>
       <div

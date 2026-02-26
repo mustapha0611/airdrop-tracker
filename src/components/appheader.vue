@@ -7,11 +7,11 @@ const theme = useThemeStore();
 </script>
 
 <template>
-  <header class="border-b border-slate-200">
+  <header class="border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
 
       <!-- LEFT: LOGO -->
-      <div class="font-semibold text-slate-800  tracking-tight">
+      <div class="font-semibold text-slate-800 dark:text-slate-100 tracking-tight transition-colors duration-300">
         Airdrop Tracker
       </div>
 
@@ -21,7 +21,7 @@ const theme = useThemeStore();
         <!-- Theme Toggle -->
         <button
           @click="theme.toggle()"
-          class="cursor-pointer text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition"
+          class="cursor-pointer text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-300"
           :title="theme.dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
         >
           <i :class="theme.dark ? 'pi pi-sun' : 'pi pi-moon'" style="font-size: 1.25rem"></i>
@@ -31,7 +31,7 @@ const theme = useThemeStore();
         <a
           href="https://github.com/mustapha0611/airdrop-tracker"
           target="_blank"
-          class="text-slate-500 hover:text-slate-800  transition"
+          class="text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-300"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
             viewBox="0 0 24 24">
@@ -43,14 +43,14 @@ const theme = useThemeStore();
         <a
           href="https://x.com/MustaphaMS007"
           target="_blank"
-          class="text-slate-500 hover:text-slate-800 transition"
+          class="text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-300"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
             fill="currentColor" viewBox="0 0 24 24">
             <path d="M18.9 2H22l-7.2 8.2L23 22h-6.7l-5.3-6.9L4.9 22H1.8l7.7-8.8L1 2h6.8l4.8 6.3L18.9 2z"/>
           </svg>
         </a>
-        <button @click="auth.logout()" class="cursor-pointer text-slate-500 hover:text-slate-800 transition">
+        <button @click="auth.logout()" class="cursor-pointer text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-300">
           <i class="pi pi-sign-out"></i>
         </button>
       </div>
