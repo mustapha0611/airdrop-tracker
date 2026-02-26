@@ -85,7 +85,7 @@ function clearError(field) {
             @focus="clearError('name')"
             type="text"
             placeholder="enter airdrop name (excluding union.. lol)"
-            class="w-full px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
+            class="w-full px-3 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
           />
           <p v-if="errors.name" class="mt-1 text-xs text-red-500">
             {{ errors.name }}
@@ -96,7 +96,7 @@ function clearError(field) {
         <div class="relative">
           <button
             @click="showStatusDropdown = !showStatusDropdown"
-            class="w-full px-3 flex items-center justify-between py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
+            class="w-full px-3 flex items-center justify-between py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
           >
             {{ form.status.charAt(0).toUpperCase() + form.status.slice(1) }}
             <i class="pi pi-angle-down text-slate-500 dark:text-slate-400"></i>
@@ -139,7 +139,7 @@ function clearError(field) {
        
             type="url"
             placeholder="https://example.com"
-            class="w-full px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
+            class="w-full px-3 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
           />
         </div>
 
@@ -152,7 +152,7 @@ function clearError(field) {
             v-model="form.tags"
             type="text"
             placeholder="e.g., defi, polygon, eth"
-            class="w-full px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
+            class="w-full px-3 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
           />
         </div>
 
@@ -168,7 +168,7 @@ function clearError(field) {
           <button
             @click="submit"
             :disabled="isLoading"
-            class="flex-1 px-4 py-2 text-sm font-medium cursor-pointer bg-slate-800 dark:bg-blue-600 text-white rounded-lg hover:bg-slate-700 dark:hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="flex-1 px-4 py-2 text-sm font-medium cursor-pointer bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span
               class="pi pi-spin pi-spinner cursor-not-allowed"

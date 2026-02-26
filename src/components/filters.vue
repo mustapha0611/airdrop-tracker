@@ -10,13 +10,13 @@ const store = useAirdropStore();
     <input
       v-model="store.search"
       placeholder="Search airdrops"
-      class="px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-300 dark:focus:ring-slate-600 transition-colors duration-300"
+      class="px-3 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:focus:ring-blue-500 transition-colors duration-300"
     />
 
     <div class="relative">
       <button
       @click="store.showStatusDropdown = !store.showStatusDropdown"
-      class="px-3 flex items-center gap-2 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 cursor-pointer focus:outline-none focus:ring-1 focus:ring-slate-300 dark:focus:ring-slate-600 transition-colors duration-300"
+      class="px-3 flex items-center gap-2 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-500 dark:focus:ring-blue-500 transition-colors duration-300"
       >
       {{ store.status === 'all' ? 'All status' : store.status }} <i class="pi pi-angle-down"></i>
       </button>

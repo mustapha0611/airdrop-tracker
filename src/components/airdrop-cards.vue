@@ -29,7 +29,7 @@ function removeTag(tag) {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group">
+  <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group text-slate-800 dark:text-slate-100">
     <!-- Actions -->
     <div class="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
       <button
@@ -55,7 +55,7 @@ function removeTag(tag) {
       {{ airdrop.description }}
     </p>
  <div>
-  <span class="ml-2 text-xs font-medium capitalize px-2 py-0.5 rounded-xl inline-block mb-3"   :class="{
+  <span class=" text-xs font-medium capitalize px-2 py-0.5 rounded-md inline-block mb-3"   :class="{
           'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100': airdrop.status === 'active',
           'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100': airdrop.status === 'completed',
           'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100': airdrop.status === 'expired',

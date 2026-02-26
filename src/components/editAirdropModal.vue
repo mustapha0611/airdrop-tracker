@@ -54,9 +54,9 @@ toast.add({
       </h2>
 
       <div class="space-y-3">
-        <input v-model="name" class="w-full px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300" />
+        <input v-model="name" class="w-full px-3 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300" />
         <textarea v-model="description" rows="3" class="w-full px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none transition-colors duration-300" />
-        <input v-model="reference_link" class="w-full px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300" />
+        <input v-model="reference_link" class="w-full px-3 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300" />
         <div class="relative">
           <button
             @click="showEditDropdown = !showEditDropdown"
@@ -78,14 +78,14 @@ toast.add({
             </button>
           </div>
         </div>
-        <input v-model="tags" class="w-full px-3 py-2 text-sm border rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300" />
+        <input v-model="tags" class="w-full px-3 py-2 text-sm border rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300" />
       </div>
 
       <div class="flex justify-end gap-3 mt-6">
         <button @click="$emit('close')" class="text-sm py-2 px-4 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-slate-100 cursor-pointer transition-colors duration-300">
           Cancel
         </button>
-        <button @click="submit" :disabled="isLoading" class="bg-slate-800 dark:bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-slate-700 dark:hover:bg-blue-700 cursor-pointer disabled:bg-slate-300 disabled:dark:bg-slate-700 disabled:cursor-not-allowed transition-colors duration-300">
+        <button @click="submit" :disabled="isLoading" class="bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer disabled:bg-slate-300 disabled:dark:bg-slate-700 disabled:cursor-not-allowed transition-colors duration-300">
           <span
             class="pi pi-spin pi-spinner cursor-not-allowed"
             v-if="isLoading"

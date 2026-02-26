@@ -7,7 +7,7 @@ const theme = useThemeStore();
 </script>
 
 <template>
-  <header class="border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+  <header class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors duration-300 sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
 
       <!-- LEFT: LOGO -->
