@@ -15,8 +15,10 @@ export const useThemeStore = defineStore('theme', {
     apply() {
       if (this.dark) {
         document.documentElement.classList.add('dark');
+        document.documentElement.classList.add('my-app-dark');
       } else {
         document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove('my-app-dark');
       }
     }
   }

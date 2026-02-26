@@ -18,6 +18,14 @@ const theme = useThemeStore();
       <!-- RIGHT -->
       <div class="flex items-center gap-4">
 
+        <!-- Theme Toggle -->
+        <button
+          @click="theme.toggle()"
+          class="cursor-pointer text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition"
+          :title="theme.dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+        >
+          <i :class="theme.dark ? 'pi pi-sun' : 'pi pi-moon'" style="font-size: 1.25rem"></i>
+        </button>
  
         <!-- GitHub -->
         <a
