@@ -1,5 +1,6 @@
 <template>
   <div class="flex items-center justify-center h-screen">
+    <i class="pi pi-spin pi-spinner"></i>
     <p>Logging you in, please wait...</p>
   </div>
 </template>
